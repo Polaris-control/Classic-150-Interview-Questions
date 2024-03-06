@@ -1,4 +1,4 @@
-﻿#include <iostream>
+#include <iostream>
 #include <vector>
 
 using namespace std;
@@ -15,8 +15,10 @@ public:
 				return false;
 
 			maxReachable = max(maxReachable, i + nums[i]);
-			if (maxReachable >= n - 1)
+			if (maxReachable >= n - 1) 
 				return true;
+			
+				
 		}
 
 		return false;
@@ -34,10 +36,10 @@ int main()
 	cout << "Please enter a non-negative integer array element (end the input with -1):" << endl;
 	while (true) {
 		cin >> num;
-		if (num == -1) {
+		if (num == -1)
 			break;
-			nums.push_back(num);
-		}
+		nums.push_back(num);
+	}
 		bool result = solution.canJump(nums);
 		if (result)
 			cout << "True" << endl;
@@ -47,5 +49,5 @@ int main()
 		return 0;
 	}
    
-}
+
 
