@@ -79,3 +79,6 @@ int main() {
 
     return 0;
 }
+
+/*代码的核心是实现了一个数据结构 RandomizedSet
+它提供了在常数时间复杂度内执行插入、删除和获取随机元素的功能。这个数据结构的核心思想是利用了哈希表（unordered_map）和动态数组（vector）*/
