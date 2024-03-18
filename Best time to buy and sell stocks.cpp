@@ -1,46 +1,49 @@
-﻿#include <iostream>
+#include <iostream>
 #include <vector>
 
+// Function to calculate the maximum profit from buying and selling stocks
 int maxProfit(std::vector<int>& prices) {
     int n = prices.size();
     if (n <= 1) {
-        return 0; // 如果数组长度小于等于1，则无法进行交易，最大利润为0
+        return 0; // If the array length is less than or equal to 1, no transactions can be made, so maximum profit is 0
     }
 
-    int maxProfit = 0; // 初始化最大利润为0
-    int minPrice = prices[0]; // 初始化最低股价为第一天的股价
+    int maxProfit = 0; // Initialize maximum profit to 0
+    int minPrice = prices[0]; // Initialize minimum stock price to the price of the first day
 
+    // Loop through the prices array
     for (int i = 1; i < n; ++i) {
-        // 更新最低股价
+        // Update the minimum stock price
         minPrice = std::min(minPrice, prices[i]);
 
-        // 计算当前利润并更新最大利润
+        // Calculate the current profit and update the maximum profit
         maxProfit = std::max(maxProfit, prices[i] - minPrice);
     }
 
-    return maxProfit;
+    return maxProfit; // Return the maximum profit
 }
 
+// Main function
 int main() {
     int n;
 
-    // 从键盘获取数组大小
+    // Get the size of the array from the user
     std::cout << "Enter the array size: ";
     std::cin >> n;
 
     std::vector<int> prices(n);
 
-    // 从键盘获取股票价格数组
-    std::cout << "Enter the element: ";
+    // Get the stock prices array from the user
+    std::cout << "Enter the elements: ";
     for (int i = 0; i < n; ++i) {
         std::cin >> prices[i];
     }
 
-    // 计算最大利润
+    // Calculate the maximum profit
     int result = maxProfit(prices);
 
-    // 输出结果
-    std::cout << "maximun profit: " << result << std::endl;
+    // Output the result
+    std::cout << "Maximum profit: " << result << std::endl;
 
     return 0;
 }
