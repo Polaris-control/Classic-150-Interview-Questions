@@ -21,9 +21,51 @@
      第三个孩子只得到 1 颗糖果，这满足题面中的两个条件。*/
 
 #include <iostream>
+#include <vector>
+#include <algorithm>
 
-int main()
-{
-    std::cout << "Hello World!\n";
+using namespace std;
+
+int candy(vector<int>& ratings) {
+    int n = ratings.size();
+    vector<int> candies(n, 1); // 初始化每个孩子至少有一个糖果
+
+    // 从左往右遍历，如果右边孩子的评分高于左边孩子，则右边孩子的糖果数为左边孩子的糖果数加一
+    for (int i = 1; i < n; ++i) {
+        if (ratings[i] > ratings[i - 1]) {
+            candies[i] = candies[i - 1] + 1;
+        }
+    }
+
+    // 从右往左遍历，如果左边孩子的评分高于右边孩子且糖果数不满足要求，则更新左边孩子的糖果数
+    for (int i = n - 2; i >= 0; --i) {
+        if (ratings[i] > ratings[i + 1]) {
+            candies[i] = max(candies[i], candies[i + 1] + 1);
+        }
+    }
+
+    // 统计总共需要的糖果数
+    int total = 0;
+    for (int candy : candies) {
+        total += candy;
+    }
+
+    return total;
 }
 
+int main() {
+    int n;
+    cout << "Enter the number of children: ";
+    cin >> n;
+
+    vector<int> ratings(n);
+    cout << "Enter the ratings of each child: ";
+    for (int i = 0; i < n; ++i) {
+        cin >> ratings[i];
+    }
+
+    int minCandies = candy(ratings);
+    cout << "Minimum number of candies required: " << minCandies << endl;
+
+    return 0;
+}
