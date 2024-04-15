@@ -3,6 +3,9 @@
 
 using namespace std;
 
+// 将整数转换为罗马数字的函数
+// Function to convert an integer to Roman numeral
+
 string intToRoman(int num) {
 	string result = "";
 
@@ -33,7 +36,7 @@ int main() {
 	}
 
 	string roman = intToRoman(num);
-	cout << "Roman number is:" << roman << endl;
+	cout << "Roman numeral is:" << roman << endl;
 
 	return 0;
 
