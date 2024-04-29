@@ -21,11 +21,11 @@ int lengthOfLastWord(std::string s) {
 
 int main() {
     std::string input;
-    std::cout << "请输入一个字符串：";
+    std::cout << "enter a string：";
     std::getline(std::cin, input);
     
     int result = lengthOfLastWord(input);
-    std::cout << "最后一个单词的长度为：" << result << std::endl;
+    std::cout << "last world length =：" << result << std::endl;
     
     return 0;
 }
